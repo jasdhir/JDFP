@@ -1,0 +1,35 @@
+<script>
+    var orders = [
+  { productTitle: "Product 1", amount: 10 },
+  { productTitle: "Product 2", amount: 30 },
+  { productTitle: "Product 3", amount: 20 },
+  { productTitle: "Product 4", amount: 60 }
+];
+
+var totalAmount = 0;
+
+for (var i = 0; i < orders.length; i++) {
+  totalAmount += orders[i].amount;
+}
+
+console.log(totalAmount); // 120
+
+console.log("Using Reduce ...");
+const sumAmount = (currentTotalAmount, order) => currentTotalAmount + order.amount;
+
+const getTotalAmount = (orders) => orders.reduce(sumAmount, 0);
+console.log(getTotalAmount(orders)); // 120
+
+console.log("Another Way . . . ");
+
+const getAmount = (order) => order.amount;
+const sumAmount1 = (acc, amount) => acc + amount;
+
+function getTotalAmount1(orders) {
+  return orders
+    .map(getAmount)
+    .reduce(sumAmount1, 0);
+}
+console.log(getTotalAmount1(orders)); // 120
+
+</script>
